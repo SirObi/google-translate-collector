@@ -16,12 +16,18 @@ def translate(source_text):
    translation = translate_client.translate(
        text,
        target_language=target)
-   print(u'Text: {}'.format(text))
-   print(u'Translation: {}'.format(translation['translatedText']))
+
+   return translation['translatedText']
 
 def translate_file(file_path):
    with open(file_path, 'r') as infile:
-      for line in infile:
-         translate(line)
+      translations = [translate(line) for line in infile]
+      return translations
 
-translate_file('./english_words.txt')
+def store_translations(translations, file_path):
+   with open(file_path, 'w') as outfile:
+      for phrase in translations:
+         outfile.write('{}\n'.format(phrase))
+
+translations = translate_file('./english_words.txt')
+store_translations(translations, './mandarin_translations.txt')
