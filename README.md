@@ -14,6 +14,15 @@ And a translation API is contacted
 Then I receive a translation  
 And the translation is saved to a text file
 
+__v1.1__  ===============  
+Given I have more than 1 source language phrase saved in a text file  
+And I don't have a translation file with that phrase yet  
+
+When I run the program  
+
+Then the phrases are read in bulk  
+And a translation API is contacted only once  
+
 
 __v2__  ===============  
 Given I have a target language phrase saved in a text file  
