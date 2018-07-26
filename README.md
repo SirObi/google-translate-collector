@@ -3,7 +3,7 @@ Allows you to take a bunch of phrases in your native language and turn them into
 
 It also helps you revise for your language class hands-free, which is huge for your productivity and cognitive comfort. Not to mention your neck will thank you for this.
 
-__v1__  ===============  
+__v1__  ===============  DONE
 Given I have a source language phrase saved in a text file  
 And I don't have a translation file with that phrase yet
 
