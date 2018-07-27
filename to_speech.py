@@ -4,9 +4,9 @@ def synthesize_english_speech(file):
     client = texttospeech.TextToSpeechClient()
     
     with open(file, 'r') as infile:
-        for line in file:
+        for line in infile:
             input_text = texttospeech.types.SynthesisInput(text=line)
-
+            
             # Note: the voice can also be specified by name.
             # Names of voices can be retrieved with client.list_voices().
             voice = texttospeech.types.VoiceSelectionParams(
