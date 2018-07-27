@@ -1,3 +1,4 @@
+import json
 # Imports the Google Cloud client library
 from google.cloud import translate
 
@@ -22,14 +23,12 @@ def translate(source_text):
 def translate_file(file_path):
    with open(file_path, 'r') as infile:
       translations = {line.strip('\n'): translate(line) for line in infile}
-      print(translations)
-      print(type(translations))
       return translations
 
 def store_translations(translations, file_path):
+   """Takes dictionary of English-Mandarin pairs and stores it as a JSON"""
    with open(file_path, 'w') as outfile:
-      for phrase in translations:
-         outfile.write('{}\n'.format(phrase))
+      json.dump(translations, outfile)
 
 translations = translate_file('./english_words.txt')
 store_translations(translations, './mandarin_translations.txt')
