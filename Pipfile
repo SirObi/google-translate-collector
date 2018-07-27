@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 requests = "*"
 google-cloud-translate = "*"
+google-cloud-speech = "*"
+google-cloud-texttospeech = "*"
 
 [dev-packages]
 
