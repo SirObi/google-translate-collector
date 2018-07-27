@@ -21,7 +21,9 @@ def translate(source_text):
 
 def translate_file(file_path):
    with open(file_path, 'r') as infile:
-      translations = [translate(line) for line in infile]
+      translations = {line.strip('\n'): translate(line) for line in infile}
+      print(translations)
+      print(type(translations))
       return translations
 
 def store_translations(translations, file_path):
