@@ -1,9 +1,21 @@
+import os
+
+def get_filename(open_file):
+    """Grab name of file that was opened with 
+    open()"""
+    file_path = open_file.name
+    filename = os.path.basename(file_path)
+    return filename
+
 def synthesize_english_speech(file):
     """Synthesizes speech from the input string of text."""
     from google.cloud import texttospeech
     client = texttospeech.TextToSpeechClient()
     
     with open(file, 'r') as infile:
+        text_filename = get_filename(infile).strip('.txt')
+        output_filename = "{}.mp3".format(text_filename)
+
         for line in infile:
             input_text = texttospeech.types.SynthesisInput(text=line)
             
@@ -19,9 +31,9 @@ def synthesize_english_speech(file):
             response = client.synthesize_speech(input_text, voice, audio_config)
 
             # The response's audio_content is binary.
-            with open('output.mp3', 'ab') as out:
+            with open(output_filename, 'ab') as out:
                 out.write(response.audio_content)
-                print('Audio content written to file "output.mp3"')
+                print('Audio content written to file "{}"'.format(output_filename))
 
 
 synthesize_english_speech("./english_words.txt")
