@@ -36,4 +36,19 @@ def synthesize_english_speech(file):
                 print('Audio content written to file "{}"'.format(output_filename))
 
 
+def synthesize_english_mandarin_speech(file):
+    """Synthesizes speech from a JSON input, 
+    containing English-Mandarin pairs"""
+    from google.cloud import texttospeech
+    client = texttospeech.TextToSpeechClient()
+
+    with open(file, 'r') as infile:
+        text_filename = get_filename(infile).strip('.txt')
+        output_filename = "{}.mp3".format(text_filename)
+        
+        #TODO: implement function once JSON input is available from to_mandarin.py
+        #for english, mandarin in dictionary.items():
+            
+
+
 synthesize_english_speech("./english_words.txt")
