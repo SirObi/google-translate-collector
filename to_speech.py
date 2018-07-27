@@ -19,7 +19,7 @@ def synthesize_english_speech(file):
             response = client.synthesize_speech(input_text, voice, audio_config)
 
             # The response's audio_content is binary.
-            with open('output.mp3', 'wb') as out:
+            with open('output.mp3', 'ab') as out:
                 out.write(response.audio_content)
                 print('Audio content written to file "output.mp3"')
 
