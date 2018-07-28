@@ -47,3 +47,7 @@ And I specify the length of pause between pairs
 Then I receive a stream of audio data  
 And the audio data is saved to an mp3 file  
 And the source phrase always comes first in the pair  
+
+Notes:  
+This program uses recording of silence made available by Andrew Hardwick:  
+http://duramecho.com/Misc/SilentCd/  
