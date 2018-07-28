@@ -1,4 +1,11 @@
 import os
+import pathlib
+
+def make_output_dir_if_needed(input_file):
+    input_filename = get_filename(input_file).strip('.txt')
+    new_dir_path = './{}/individual_recordings'.format(input_filename)
+    pathlib.Path(new_dir_path).mkdir(parents=True, exist_ok=True) 
+    return new_dir_path
 
 def get_filename(open_file):
     """Grab name of file that was opened with 
@@ -13,8 +20,7 @@ def synthesize_english_speech(file):
     client = texttospeech.TextToSpeechClient()
     
     with open(file, 'r') as infile:
-        text_filename = get_filename(infile).strip('.txt')
-        output_filename = "{}.mp3".format(text_filename)
+        output_dir = make_output_dir_if_needed(infile)
 
         for line in infile:
             input_text = texttospeech.types.SynthesisInput(text=line)
@@ -29,7 +35,9 @@ def synthesize_english_speech(file):
                 audio_encoding=texttospeech.enums.AudioEncoding.MP3)
 
             response = client.synthesize_speech(input_text, voice, audio_config)
-
+            
+            output_filename = line.strip().replace(" ", "_")
+            output_filename = '{}/{}.mp3'.format(output_dir, output_filename)
             # The response's audio_content is binary.
             with open(output_filename, 'ab') as out:
                 out.write(response.audio_content)
