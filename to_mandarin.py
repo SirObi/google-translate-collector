@@ -31,4 +31,4 @@ def store_translations(translations, file_path):
       json.dump(translations, outfile)
 
 translations = translate_file('./english_words.txt')
-store_translations(translations, './mandarin_translations.txt')
+store_translations(translations, './mandarin_translations.json')
