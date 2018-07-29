@@ -1,8 +1,9 @@
 import os
+import json
 import pathlib
 
 def make_output_dir_if_needed(input_file):
-    input_filename = get_filename(input_file).strip('.txt')
+    input_filename = get_filename(input_file).strip('.txt').strip('.json')
     new_dir_path = './{}/individual_recordings'.format(input_filename)
     pathlib.Path(new_dir_path).mkdir(parents=True, exist_ok=True) 
     return new_dir_path
@@ -14,7 +15,7 @@ def get_filename(open_file):
     filename = os.path.basename(file_path)
     return filename
 
-def synthesize_english_speech(file):
+def synthesize_speech_from_textfile(file):
     """Synthesizes speech from the input string of text."""
     from google.cloud import texttospeech
     client = texttospeech.TextToSpeechClient()
@@ -43,20 +44,40 @@ def synthesize_english_speech(file):
                 out.write(response.audio_content)
                 print('Audio content written to file "{}"'.format(output_filename))
 
+def synthesize_speech_one_item(input_string, input_language, output_name, output_dir, google_client):
+    from google.cloud import texttospeech
 
-def synthesize_english_mandarin_speech(file):
+    input_text = texttospeech.types.SynthesisInput(text=input_string)
+    
+    voice = texttospeech.types.VoiceSelectionParams(
+                language_code=input_language,
+                ssml_gender=texttospeech.enums.SsmlVoiceGender.FEMALE)
+
+    audio_config = texttospeech.types.AudioConfig(
+                audio_encoding=texttospeech.enums.AudioEncoding.MP3)
+
+    response = google_client.synthesize_speech(input_text, voice, audio_config)
+    
+    output_filename = output_name.strip().replace(" ", "_")
+    output_filename = '{}/{}_{}.mp3'.format(output_dir, output_filename, input_language)
+    
+    with open(output_filename, 'ab') as out:
+                out.write(response.audio_content)
+                print('Audio content written to file "{}"'.format(output_filename))
+
+def synthesize_speech_from_json(file):
     """Synthesizes speech from a JSON input, 
     containing English-Mandarin pairs"""
     from google.cloud import texttospeech
     client = texttospeech.TextToSpeechClient()
 
-    with open(file, 'r') as infile:
-        text_filename = get_filename(infile).strip('.txt')
-        output_filename = "{}.mp3".format(text_filename)
-        
-        #TODO: implement function once JSON input is available from to_mandarin.py
-        #for english, mandarin in dictionary.items():
-            
+    with open(file, 'rb') as infile:
+        output_dir = make_output_dir_if_needed(infile)
+        language_pairs = json.load(infile)
+
+    for english, mandarin in language_pairs.items():
+        synthesize_speech_one_item(english, 'en-US', english, output_dir, client)
+        synthesize_speech_one_item(mandarin, 'zh', english, output_dir, client)
 
 
-synthesize_english_speech("./english_words.txt")
+synthesize_speech_from_json("./conversation.json")
