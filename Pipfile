@@ -10,6 +10,8 @@ google-cloud-speech = "*"
 google-cloud-texttospeech = "*"
 pathlib = "*"
 pydub = "==0.18.0"
+python-msspeak = "*"
+unidecode = "*"
 
 [dev-packages]
 
