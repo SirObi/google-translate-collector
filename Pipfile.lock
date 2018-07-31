@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dfa2bab410279346738b7771041545fd1df4116eacde1e2f55ca21387335b34b"
+            "sha256": "10c79c0500d41ccb589645b68883bb40f5b2f4949cef393c079f8a500f324a70"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -181,6 +181,13 @@
             "index": "pypi",
             "version": "==0.18.0"
         },
+        "python-msspeak": {
+            "hashes": [
+                "sha256:94a28b2ce1b04fc3708cdb177149f3ac4676e5df78a6b9d6fc9512d9b7d9c157"
+            ],
+            "index": "pypi",
+            "version": "==0.3.1"
+        },
         "pytz": {
             "hashes": [
                 "sha256:a061aa0a9e06881eb8b3b2b43f05b9439d6583c206d0a6c340ff72a7b6669053",
@@ -209,6 +216,14 @@
                 "sha256:832dc0e10feb1aa2c68dcc57dbb658f1c7e65b9b61af69048abc87a2db00a0eb"
             ],
             "version": "==1.11.0"
+        },
+        "unidecode": {
+            "hashes": [
+                "sha256:72f49d3729f3d8f5799f710b97c1451c5163102e76d64d20e170aedbbd923582",
+                "sha256:8c33dd588e0c9bc22a76eaa0c715a5434851f726131bd44a6c26471746efabf5"
+            ],
+            "index": "pypi",
+            "version": "==1.0.22"
         },
         "urllib3": {
             "hashes": [
