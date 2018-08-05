@@ -3,7 +3,9 @@ import json
 import pathlib
 
 def make_output_dir_if_needed(input_file):
-    input_filename = get_filename(input_file).strip('.txt').strip('.json')
+    '''Given a file named Conversation will create
+    directory called Conversation'''
+    input_filename = os.path.splitext(input_file)[-2]
     new_dir_path = './{}/individual_recordings'.format(input_filename)
     pathlib.Path(new_dir_path).mkdir(parents=True, exist_ok=True) 
     return new_dir_path
