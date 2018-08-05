@@ -49,19 +49,8 @@ And the audio data is saved to an mp3 file
 And the source phrase always comes first in the pair  
 
 
-__v4__  ===============
-Given I have a list of sentences written in Pinyin  
-And Google Translate does not support Zh -> Zh translation with Pinyin  
-
-When I run the program  
-
-Then the list gets converted to ANSI  
-And I receive a stream of audio data  
-And the data is saved as a Chinese-only recording  
-
-
-This is due to my teacher writing a lot in Pinyin during  
-our lessons.
+TODO:  
+Refactor to_speech.py and use argument parser
 
 
 Notes:  
