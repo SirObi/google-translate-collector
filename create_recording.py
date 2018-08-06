@@ -1,6 +1,5 @@
 import os
 from pydub import AudioSegment
-from itertools import repeat
 
 MP3_OUTPUTS = "./mp3_outputs/Mandarin vocab - 1/individual_recordings/"
 OUTPUT_DIR = "./mp3_outputs/Mandarin vocab - 1"
@@ -15,7 +14,7 @@ def concatenate_recording(dir_name, *args):
     silence_file = './silence_mp3s/Silence01s.mp3'
     silence = AudioSegment.from_mp3(silence_file)
     
-    final_output = silence + silence + silence
+    final_output = silence
     
     two_secs = create_pause(silence, 2)
     for audio_file in args:
