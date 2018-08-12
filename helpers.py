@@ -15,7 +15,7 @@ def get_filename(open_file):
     filename = os.path.basename(file_path)
     return filename
 
-def convert_txt_to_json(file_path)
+def convert_txt_to_json(file_path):
     lines = []
     with open(file_path, 'r') as infile:
         for line in infile:
