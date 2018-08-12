@@ -12,6 +12,7 @@ pathlib = "*"
 pydub = "==0.18.0"
 python-msspeak = "*"
 unidecode = "*"
+keyring = "*"
 
 [dev-packages]
 
