@@ -1,6 +1,7 @@
 import os
 import json
 import keyring
+import pathlib
 from helpers import make_output_dir_if_needed, get_filename, check_for_new_files
 from csv_json import save_csv_to_json
 
@@ -30,10 +31,15 @@ def synthesize_speech_from_json(file, base_output_dir=MP3_OUTPUT_DIR):
     with open(file, 'rb') as infile:
         output_dir = make_output_dir_if_needed(base_output_dir, infile)
         language_pairs = json.load(infile)
-
-    for english, mandarin in language_pairs.items():
-        synthesize_speech_one_item(english, 'en-US', 'JessaRUS', english, output_dir)
-        synthesize_speech_one_item(mandarin, 'zh-CN', 'Kangkang, Apollo', english, output_dir)
+    try:
+        for english, mandarin in language_pairs.items():
+            synthesize_speech_one_item(english, 'en-US', 'JessaRUS', english, output_dir)
+            synthesize_speech_one_item(mandarin, 'zh-CN', 'Kangkang, Apollo', english, output_dir)
+    except FileNotFoundError as ex:
+        pathlib.Path.rmdir(output_dir)
+        print(ex)
+        print("Invalid input. Cleaning up... Program will attempt to remove new mp3 directory.")
+        print("Then please fix the error and try again.")
 
 def synthesize_mandarin_from_text(file, output_name):
     """Synthesizes speech from a text file,
