@@ -48,7 +48,7 @@ def synthesize_mandarin_from_text(file, output_name):
 
 new_inputs = check_for_new_files()
 print(new_inputs)
-if new_inputs == True:
+if len(new_inputs) > 0:
     json_inputs = []
     for file in new_inputs:
         csv_file = './csv_inputs/{}.csv'.format(file)
