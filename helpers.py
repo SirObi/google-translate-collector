@@ -24,3 +24,14 @@ def convert_txt_to_json(file_path):
     output_path = file_path.replace('.txt', '.json')
     with open(output_path, 'w') as outfile:
         json.dump(lines, outfile)
+
+def check_for_new_files(input_dir='./csv_inputs', output_dir='./mp3_outputs'):
+    inputs, outputs = set({}), set({})
+    for file in os.listdir(input_dir):
+        inputs.add(os.path.basename(file).split('.')[0])
+    for file in os.listdir(output_dir):
+        outputs.add(os.path.basename(file).split('.')[0])
+    
+    new_files = list(inputs.difference(outputs))
+    return new_files if new_files else False
+                     
