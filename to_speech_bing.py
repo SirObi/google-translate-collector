@@ -13,6 +13,9 @@ def synthesize_speech_one_item(input_string, input_language, voice, output_name,
     from bingtts import Translator
     #translator = Translator(BING_SUBSCRIPTION_KEY)
     bing_key = keyring.get_password("bing_api", "obi")
+    if bing_key == None:
+        print("Please set BING_SUBSCRIPTION_KEY")
+        return
     translator = Translator(bing_key)
 
     output = translator.speak(input_string, input_language, voice, "audio-16khz-64kbitrate-mono-mp3 ")
@@ -53,8 +56,9 @@ def synthesize_mandarin_from_text(file, output_name):
             synthesize_speech_one_item(line, 'zh-CN', 'Kangkang, Apollo', output_name, output_dir)
 
 new_inputs = check_for_new_files()
-print(new_inputs)
-if len(new_inputs) > 0:
+len_new_inputs = len(new_inputs) if type(new_inputs) != bool else 0 
+print(len_new_inputs)
+if len_new_inputs > 0:
     json_inputs = []
     for file in new_inputs:
         csv_file = './csv_inputs/{}.csv'.format(file)
