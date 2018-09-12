@@ -1,18 +1,21 @@
 import os
 import json
-import keyring
+#import keyring
 import pathlib
 from helpers import make_output_dir_if_needed, get_filename, check_for_new_files
 from csv_json import save_csv_to_json
 
 MP3_OUTPUT_DIR = "./mp3_outputs"
 JSON_INPUT_FILE = "./json_files/Lesson 14-08-2018 - Phrasebook.json"
-#BING_SUBSCRIPTION_KEY = 'YOUR_KEY_GOES_HERE'
+# Copy the key from your app in your Bing account
+# Then at Command Line set BING_KEY=your key
+BING_SUBSCRIPTION_KEY = os.environ['BING_KEY']
 
 def synthesize_speech_one_item(input_string, input_language, voice, output_name, output_dir):
     from bingtts import Translator
     #translator = Translator(BING_SUBSCRIPTION_KEY)
-    bing_key = keyring.get_password("bing_api", "obi")
+    bing_key = BING_SUBSCRIPTION_KEY
+    # bing_key = keyring.get_password("bing_api", "obi")
     if bing_key == None:
         print("Please set BING_SUBSCRIPTION_KEY")
         return

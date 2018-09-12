@@ -1,11 +1,8 @@
 import os
 from pydub import AudioSegment
 
-MP3_OUTPUTS = "./mp3_outputs/Mandarin vocab - 1/individual_recordings/"
-OUTPUT_DIR = "./mp3_outputs/Mandarin vocab - 1"
-
-MP3_OUTPUTS = "./mp3_outputs/Mandarin vocab - 1/individual_recordings/"
-OUTPUT_DIR = "./mp3_outputs/Mandarin vocab - 1"
+MP3_OUTPUTS = "./mp3_outputs/Lesson 270818/individual_recordings/"
+OUTPUT_DIR = "./mp3_outputs/Lesson 270818"
 
 def concatenate_recording(dir_name, *args):
     '''Create a recording given an arbitrarily long

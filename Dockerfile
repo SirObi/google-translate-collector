@@ -9,7 +9,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY Pipfile ./
 COPY Pipfile.lock ./
-RUN pipenv install
+RUN pipenv install --system
 RUN pipenv install keyring
 COPY helpers.py ./
 COPY create_recording.py ./
@@ -18,4 +18,10 @@ COPY csv_inputs ./csv_inputs
 RUN mkdir json_files
 COPY mp3_outputs ./mp3_outputs
 COPY silence_mp3s ./silence_mp3s
+
+ARG BING_KEY
+ENV BING_KEY $BING_KEY
+
+RUN pipenv shell
+
 CMD ["python", "to_speech_bing.py"]
