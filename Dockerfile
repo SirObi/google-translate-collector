@@ -6,5 +6,6 @@ RUN pip install --no-cache-dir --trusted-host pypi.python.org pipenv
 RUN mkdir /app
 WORKDIR /app
 COPY Pipfile ./
+COPY Pipfile.lock ./
 RUN pipenv install
-CMD echo "Hello world"
+CMD ls
