@@ -1,11 +1,27 @@
 import os
+import argparse
 from pydub import AudioSegment
+from distutils import spawn
 
-MP3_OUTPUTS = "./mp3_outputs/Mandarin vocab - 1/individual_recordings/"
-OUTPUT_DIR = "./mp3_outputs/Mandarin vocab - 1"
+# MP3_OUTPUTS = argparse.ArgumentParser()
+# MP3_OUTPUTS.add_argument('d1', option = os.chdir(input("paste here path to MP3_OUTPUTS file:")), help= 'paste path to MP3_OUTPUTS file')
 
-MP3_OUTPUTS = "./mp3_outputs/Mandarin vocab - 1/individual_recordings/"
-OUTPUT_DIR = "./mp3_outputs/Mandarin vocab - 1"
+parser = argparse.ArgumentParser()
+parser.add_argument('--mp3outputs', help= 'paste path to MP3_OUTPUTS file')
+parser.add_argument('--outputdir', help= 'paste path to OUTPUT_DIR file')
+args = parser.parse_args()
+MP3_OUTPUTS = args.path
+OUTPUT_DIR = args.path2
+
+# OUTPUT_DIR = argparse.ArgumentParser()
+# OUTPUT_DIR.add_argument('d2', option = os.chdir(input("paste here path to OUTPUT_DIR file:")), help= 'paste path to OUTPUT_DIR file')
+
+# parser2 = argparse.ArgumentParser()
+# parser2.add_argument('--path2', help= 'paste path to OUTPUT_DIR file')
+# args2 = parser2.parse_args()
+
+
+AudioSegment.converter = spawn.find_executable('ffmpeg')
 
 def concatenate_recording(dir_name, *args):
     '''Create a recording given an arbitrarily long
