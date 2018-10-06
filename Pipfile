@@ -12,6 +12,7 @@ pathlib = "*"
 pydub = "==0.18.0"
 python-msspeak = "*"
 keyring = "*"
+bingtts = {git = "https://github.com/SirObi/Python-Bing-TTS.git"}
 
 [dev-packages]
 
