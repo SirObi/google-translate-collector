@@ -23,4 +23,6 @@ COPY csv_json.py ./
 ARG BING_KEY
 ENV BING_KEY $BING_KEY
 
+RUN apk add ffmpeg
+
 CMD ["python", "to_speech_bing.py"]
