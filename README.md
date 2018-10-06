@@ -66,6 +66,10 @@ At Command Line:
 `docker build --build-arg BING_KEY=$BING_KEY -t mandarin .`  
 `docker run -v $PWD/mp3_outputs:/app/mp3_outputs mandarin`  
 
+Troubleshooting  
+`bingtts.BadRequestException: 503 Service Unavailable`  
+Happens if you fail to sort input properly beforehand - for example if you had an English phrase in Hanzi column. These should be caught automatically, so you shouldn't see this error at all.
+
 Notes:  
 This program uses recording of silence made available by Andrew Hardwick:  
 http://duramecho.com/Misc/SilentCd/  
