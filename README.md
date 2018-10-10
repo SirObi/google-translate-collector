@@ -9,8 +9,12 @@ Note: this is still work in progress and the UX is far from great.
 Will keep working on it ;)
 
 The only supported language combination for now is:  
-Source Language: English (what you speak)  
-Target Language: Mandarin (what you want to learn)
+:uk: -> :cn:  
+Source Language:  
+English :uk: (the language you speak)
+
+Target Language:  
+Mandarin :cn: (the language you want to learn)
 
 ## Requirements
 
