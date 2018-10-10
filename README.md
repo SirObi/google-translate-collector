@@ -9,7 +9,8 @@ Note: this is still work in progress and the UX is far from great.
 Will keep working on it ;)
 
 The only supported language combination for now is:  
-:uk: -> :cn:  
+:uk: -> :cn:
+
 Source Language:  
 English :uk: (the language you speak)
 
