@@ -7,12 +7,21 @@ It also helps you revise for your language class hands-free, which is huge for y
 Note: this is still work in progress and the UX is far from great.  
 Will keep working on it ;)
 
+The only supported language combination for now is:  
+Source Language: English (what you speak)  
+Target Language: Mandarin (what you want to learn)
+
 ## Requirements
 
 • Docker  
 • Account on Microsoft Azure (free)
 
 ## Usage
+
+This app is currently optimized for people who keep their language notes in Google Translate.  
+It takes a CSV file as input (you can export your Favourites from Google Translate as a CSV).  
+The CSV is expected to have two columns with headers 'English' and 'Hanzi' (Hanzi is what Chinese characters are called).  
+Check out the example file in `/csv_inputs`.
 
 Create a new account with Azure (to get access to their Text-To-Speech services).  
 From your Azure account dashboard, create new 'app' in Cognitive Services.
