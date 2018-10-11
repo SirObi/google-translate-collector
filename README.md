@@ -42,7 +42,7 @@ The following steps should suffice to run the app and get an mp3 recording:
     `cd google-translate-collector`  
     `BING_KEY=<whatever your Bing (Azure) subscription key is>`
 
-    Build app:  
+    Build app  
     `docker build --build-arg BING_KEY=$BING_KEY -t mandarin .`
 
     Generate mp3 file for each phrase  
