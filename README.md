@@ -40,9 +40,16 @@ The following steps should suffice to run the app and get an mp3 recording:
 4.  At Command Line:  
     `git clone git@github.com:SirObi/google-translate-collector.git`  
     `cd google-translate-collector`  
-    `BING_KEY=<whatever your bing subscription key is>`  
-    `docker build --build-arg BING_KEY=$BING_KEY -t mandarin .`  
+    `BING_KEY=<whatever your Bing (Azure) subscription key is>`
+
+    Build app:  
+    `docker build --build-arg BING_KEY=$BING_KEY -t mandarin .`
+
+    Generate mp3 file for each phrase  
     `docker run -v $PWD/mp3_outputs:/app/mp3_outputs mandarin`
+
+    Create your lesson out of the mp3 files  
+    `docker run -v $PWD/mp3_outputs:/app/mp3_outputs mandarin python create_recording.py`
 
 ## Troubleshooting
 
