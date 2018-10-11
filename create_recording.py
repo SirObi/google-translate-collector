@@ -1,28 +1,28 @@
 import os
 from pydub import AudioSegment
 
-MP3_OUTPUTS = "./mp3_outputs/Phrasebook 061018/individual_recordings/"
-OUTPUT_DIR = "./mp3_outputs/Phrasebook 061018"
+MP3_OUTPUTS = "./mp3_outputs/Lesson 270818/individual_recordings/"
+OUTPUT_DIR = "./mp3_outputs/Lesson 270818"
 
 def concatenate_recording(dir_name, *args):
     '''Create a recording given an arbitrarily long
     list of mp3 files'''
-    
+
     output_file = './{}.mp3'.format(dir_name)
     print("This is output file: {}".format(output_file))
-    
+
     silence_file = './silence_mp3s/Silence01s.mp3'
     silence = AudioSegment.from_mp3(silence_file)
-    
+
     final_output = silence
-    
+
     two_secs = create_pause(silence, 2)
     for audio_file in sorted(args):
         next_phrase = AudioSegment.from_mp3(audio_file)
         pause_required = int(round(next_phrase.duration_seconds))
         pause = create_pause(silence, pause_required) + two_secs
         final_output = final_output + next_phrase + pause
-    
+
     final_output.export(output_file, format="mp3")
 
 

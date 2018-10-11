@@ -9,7 +9,7 @@ And a translation API is contacted
 Then I receive a translation
 And the translation is saved to a text file
 
-__v1.1__  ===============
+__v0.1__  ===============
 Given I have more than 1 source language phrase saved in a text file
 And I don't have a translation file with that phrase yet
 
@@ -19,7 +19,7 @@ Then the phrases are read in bulk
 And a translation API is contacted only once
 
 
-__v2__  ===============
+__v0.2__  ===============
 Given I have a target language phrase saved in a text file
 And I don't have an mp3 file with that phrase yet
 
@@ -30,7 +30,7 @@ And a text-to-speech API is contacted
 Then I receive a stream of audio data
 And the audio data is saved to an mp3 file
 
-__v3__  ===============
+__v0.3__  ===============
 Given I have a couple of mp3 files with target language phrases
 And I have a couple of mp3 files with the corresponding source language phrases
 
@@ -45,8 +45,10 @@ And the source phrase always comes first in the pair
 
 
 TODO:
-Refactor to_speech.py and use argument parser
-Always delete output folder within mp3_outputs if an error occurs while connecting to Bing API.
+1) Use argument parser in create_recording.py
+2) Always delete output folder within mp3_outputs if an error occurs while connecting to Bing API.
 Alternatively, add the ability to dump remaining CSV lines to a file and resume from where you left off (less wasteful) - this
-would require 1) using a different data structure (ability to pop things off stack), 2) Checking for number of items in output folder,
-rather than the presence of the output folder. 
+would require:
+ a) using a different data structure (ability to pop things off stack),
+ b) Checking for number of items in output folder,
+rather than the presence of the output folder.
